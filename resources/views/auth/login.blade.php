@@ -6,7 +6,13 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body p-5">
-                    <h3 class="text-center mb-4">Restaurant Management System</h3>
+                    <div class="text-center mb-4">
+                        <div class="logo-container mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <img src="{{ asset('images/Group 98.png') }}" alt="Logo Background" class="logo-background">
+                            <img src="{{ asset('images/Vector.png') }}" alt="Logo Vector" class="logo-vector" style="width: 60%; height: 60%;">
+                        </div>
+                        <h3>Restaurant Management System</h3>
+                    </div>
                     
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -46,7 +52,7 @@
                                 <input type="checkbox" 
                                        class="form-check-input" 
                                        id="remember" 
-                                       name="remember">
+                                       name="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">
                                     Se souvenir de moi
                                 </label>

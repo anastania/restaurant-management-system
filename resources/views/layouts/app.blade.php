@@ -1,13 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Restaurant Management System</title>
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    
     <style>
+        .logo-container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+        .logo-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .logo-vector {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            z-index: 2;
+        }
+        .app-logo {
+            transition: transform 0.3s ease;
+        }
+        .app-logo:hover {
+            transform: scale(1.1);
+        }
         :root {
             --primary-color: #FF6B6B;
             --secondary-color: #4ECDC4;
@@ -68,7 +105,11 @@
             <!-- Sidebar -->
             <div class="col-md-3 col-lg-2 sidebar">
                 <div class="d-flex justify-content-center mb-4">
-                    <h4 class="text-white">Restaurant Admin</h4>
+                    <div class="logo-container">
+                        <img src="{{ asset('images/Group 98.png') }}" alt="Logo Background" class="logo-background">
+                        <img src="{{ asset('images/Vector.png') }}" alt="Logo Vector" class="logo-vector">
+                    </div>
+                    <h4 class="text-white ms-2">Restaurant Admin</h4>
                 </div>
                 <nav class="nav flex-column">
                     <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
